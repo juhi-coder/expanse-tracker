@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
-const SignUp=()=> {
+const SignUp = () => {
   const emailref = useRef();
   const passwardref = useRef();
   const confirmpasswordref = useRef();
@@ -10,7 +10,6 @@ const SignUp=()=> {
     const enteredemail = emailref.current.value;
     const enteredpassward = passwardref.current.value;
     const enteredconfirmpassward = confirmpasswordref.current.value;
-
     if (enteredpassward !== enteredconfirmpassward) {
       alert("both passward are not matched");
       return;
@@ -40,79 +39,81 @@ const SignUp=()=> {
           }
           alert(errorMessage);
         });
-    }
       }
-    })
+    });
   };
-  return(<div>
-    <Container>
-      <Row className="vh-100 d-flex justify-content-center align-items-center">
-        <Col md={8} lg={6} xs={12}>
-          <Card className="px-4">
-            <Card.Body>
-              <div className="mb-3 mt-md-4">
-                <h2 className="fw-bold mb-2 text-center text-uppercase ">
-                  Sign Up
-                </h2>
-                <div className="mb-3">
-                  <Form onSubmit={submithandler}>
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
-                      <Form.Label className="text-center">
-                        Email address
-                      </Form.Label>
-                      <Form.Control
-                        type="email"
-                        placeholder="Enter email"
-                        ref={emailref}
-                      />
-                    </Form.Group>
-
-                    <Form.Group
-                      className="mb-3"
-                      controlId="formBasicPassword"
-                    >
-                      <Form.Label>Password</Form.Label>
-                      <Form.Control
-                        type="password"
-                        placeholder="Password"
-                        ref={passwardref}
-                      />
-                    </Form.Group>
-                    <Form.Group
-                      className="mb-3"
-                      controlId="formBasicPassword"
-                    >
-                      <Form.Label>Confirm Password</Form.Label>
-                      <Form.Control
-                        type="password"
-                        placeholder="Password"
-                        ref={confirmpasswordref}
-                      />
-                    </Form.Group>
-                    <Form.Group
-                      className="mb-3"
-                      controlId="formBasicCheckbox"
-                    ></Form.Group>
-                    <div className="d-grid">
-                      <Button variant="primary" type="submit">
-                        Sign UP
-                      </Button>
-                    </div>
-                  </Form>
-                  <div className="mt-3">
-                      <p className="mb-0  text-center">
+  return (
+    <div>
+      <Container>
+        <Row className="vh-100 d-flex justify-content-center align-items-center">
+          <Col md={8} lg={6} xs={12}>
+            <Card className="px-4">
+              <Card.Body>
+                <div className="mb-3 mt-md-4">
+                  <h2 className="fw-bold mb-2 text-center text-uppercase ">
+                    Sign Up
+                  </h2>
+                  <div className="mb-3">
+                    <Form onSubmit={submithandler}>
+                      <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Label className="text-center">
+                          Email address
+                        </Form.Label>
+                        <Form.Control
+                          type="email"
+                          placeholder="Enter email"
+                          ref={emailref}
+                        />
+                      </Form.Group>
+                      <Form.Group
+                        className="mb-3"
+                        controlId="formBasicPassword"
+                      >
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control
+                          type="password"
+                          placeholder="Password"
+                          ref={passwardref}
+                        />
+                      </Form.Group>
+                      <Form.Group
+                        className="mb-3"
+                        controlId="formBasicPassword"
+                      >
+                        <Form.Label>Confirm Password</Form.Label>
+                        <Form.Control
+                          type="password"
+                          placeholder="Password"
+                          ref={confirmpasswordref}
+                        />
+                      </Form.Group>
+                      <Form.Group
+                        className="mb-3"
+                        controlId="formBasicCheckbox"
+                      ></Form.Group>
+                      <div className="d-grid">
+                        <Button variant="primary" type="submit">
+                          Sign UP
+                        </Button>
+                      </div>
+                    </Form>
+                    <div className="mt-3">
+                    <p className="mb-0  text-center">
                         Already have an account??{" "}
-                        <Link className="text-primary fw-bold" to="login">Log in</Link>
+                        <Link className="text-primary fw-bold" to="login">
+                          Log in
+                        </Link>
                       </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-    </Container>
-  </div>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
+    </div>
   );
-}
+                    
+};
 export default SignUp;

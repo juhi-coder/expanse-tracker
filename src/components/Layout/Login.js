@@ -1,50 +1,51 @@
+import { useNavigate, Link } from "react-router-dom";
 import React, { useRef } from "react";
-import { useNavigate,Link } from "react-router-dom";
 import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
-
- const LogIn=()=> {
+const LogIn = () => {
   const history = useNavigate();
   const emailInputref = useRef();
   const passwordInputref = useRef();
-
-    const handleForgotPassword = (e) => {
-        e.preventDefault();
-        const enteredEmail = emailInputref.current.value;
-
-        fetch('https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyB4eAcKhjMaxtHrq60AlEDI6Ace0n31ogg',{
-            method:"POST",
-            body:JSON.stringify({
-                requestType:"PASSWORD_RESET",
-                email:enteredEmail
-            }),
-            headers:{
-                'Content-Type':'application/json'
+  const handleForgotPassword = (e) => {
+    e.preventDefault();
+    const enteredEmail = emailInputref.current.value;
+    fetch(
+      "https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyB4eAcKhjMaxtHrq60AlEDI6Ace0n31ogg",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          requestType: "PASSWORD_RESET",
+          email: enteredEmail,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          return res.json().then((data) => {
+            if (data && data.error && data.error.message) {
+              let errMessage = "Authentication Failed, " + data.error.message;
+              throw new Error(errMessage);
             }
-        }).then((res)=>{
-            if(res.ok){
-                return res.json();
-            }else{
-                return res.json().then((data)=>{
-                    if(data && data.error && data.error.message){
-                        let errMessage = "Authentication Failed, " + data.error.message;
-                        throw new Error(errMessage);
-                    }
-                })
-            }
-        }).then((data)=>{
-            console.log(data);
-            console.log("Forgrt Password  Link are Sending Sussesfully")
-        }).catch((err)=>{
-            alert(err.meassage);
-        })
-  }
+          });
+        }
+      })
+      .then((data) => {
+        console.log(data);
+        console.log("Forgrt Password  Link are Sending Sussesfully");
+      })
+      .catch((err) => {
+        alert(err.meassage);
+      });
+  };
   const submitHandler = (e) => {
     e.preventDefault();
     const enteredEmail = emailInputref.current.value;
     const enteredpassword = passwordInputref.current.value;
     localStorage.setItem("userEmail", enteredEmail);
-
-
     fetch(
       "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyB4eAcKhjMaxtHrq60AlEDI6Ace0n31ogg",
       {
@@ -64,7 +65,6 @@ import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
           return res.json();
         } else {
           res.json().then((data) => {
-
             let errormessage = "authenication Failed";
             if (data && data.error && data.error.message) {
               errormessage = data.error.message;
@@ -76,14 +76,13 @@ import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
       .then((data) => {
         localStorage.setItem("token", data.idToken);
         console.log(data.idToken);
-        history('/ExpensePage');
-
+        history("/ExpensePage");
       })
       .catch((err) => {
         alert(err.message);
       });
   };
-  return(
+  return (
     <div>
       <Container>
         <Row className="vh-100 d-flex justify-content-center align-items-center">
@@ -106,7 +105,6 @@ import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
                           ref={emailInputref}
                         />
                       </Form.Group>
-
                       <Form.Group
                         className="mb-3"
                         controlId="formBasicPassword"
@@ -129,13 +127,17 @@ import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
                       </div>
                     </Form>
                     <div className="mt-3">
-                        <p className="mb-0  text-center">
-                        Forget passward??{" "}
-                          <Link className="text-primary fw-bold"onClick={handleForgotPassword} >forget passward</Link>
-                        </p>
+                    <p className="mb-0  text-center">
+                        Forget passward?{" "}
+                        <Link
+                          className="text-primary fw-bold"
+                          onClick={handleForgotPassword}
+                        >
+                          forget passward
+                        </Link>
+                      </p>
                     </div>
-
-                  </div>
+                    </div>
                 </div>
               </Card.Body>
             </Card>
@@ -144,5 +146,5 @@ import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
       </Container>
     </div>
   );
-}
+};
 export default LogIn;
