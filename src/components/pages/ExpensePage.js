@@ -54,7 +54,6 @@ const ExpensePage = () => {
         </Link>
       </p>
       <hr />
-    
       <div style={{padding:'2%'}}><Expense/></div>
     </div>
   );

@@ -59,7 +59,7 @@ function ExpenseForm(props) {
   return (
     <Fragment>
       <Container
-        className="p-3 my-3  text-white"
+      className="p-3 my-3  text-white"
         style={{ backgroundColor: "#b3adba" }}
       >
         <Form onSubmit={submitHandler} id="expenses">
@@ -93,7 +93,7 @@ function ExpenseForm(props) {
             </Col>
             <Col className="mt-5">
               <Button type="submit" variant="success">
-                Add New Expense
+              Add New Expense
               </Button>
             </Col>
           </Row>
