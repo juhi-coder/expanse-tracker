@@ -1,19 +1,12 @@
 
-
-
-import { BrouseRouter, Router,Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
-
+import React from 'react-router-dom';
+import NavBar from './components/Layout/NavBar';
 function App() {
   return (
     
-    <Router>
-    <Navbar></Navbar>
-    
-      <Route path="\"></Route>
-    
-    </Router>
-   
+   <>
+<NavBar></NavBar>
+   </>
   );
 }
 
