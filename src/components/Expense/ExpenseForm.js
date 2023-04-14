@@ -1,6 +1,5 @@
 import React, { Fragment, useEffect, useRef } from "react";
 import { Form, Button, Row, Col, Container } from "react-bootstrap";
-
 function ExpenseForm(props) {
   const amountInputRef = useRef();
   const descriptionInputRef = useRef();
@@ -12,9 +11,51 @@ function ExpenseForm(props) {
       Description: descriptionInputRef.current.value,
       Category: categoryInputRef.current.value,
     };
+
+    const response = await fetch(
+      "https://expance-tracker-2795d-default-rtdb.firebaseio.com/expensedata.json",
+      {
+        method: "POST",
+        body: JSON.stringify(expenseData),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const data = await response.json();
+    console.log(data);
+    props.setExpensesData((data) => [...data, expenseData]);
+
     amountInputRef.current.value = "";
     descriptionInputRef.current.value = "";
   };
+
+  const getExpenseData = async () => {
+    const response = await fetch(
+      "https://expance-tracker-2795d-default-rtdb.firebaseio.com/expensedata.json"
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        const transformedData = [];
+
+        for (const key in data) {
+          transformedData.push({
+            id: key,
+            Category: data[key].Category,
+            Description: data[key].Description,
+            Amount: data[key].Amount,
+          });
+        }
+        props.setExpensesData(transformedData);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    getExpenseData();
+  }, []);
   return (
     <Fragment>
       <Container
@@ -32,7 +73,6 @@ function ExpenseForm(props) {
                 required
               ></input>
             </Col>
-
             <Col className="form-control">
               <textarea
                 style={{ height: "25px" }}
@@ -43,19 +83,14 @@ function ExpenseForm(props) {
                 required
               ></textarea>
             </Col>
-
             <Col className="form-control">
               <select ref={categoryInputRef} name="Category" required>
                 <option>Food</option>
-
                 <option>Petrol</option>
-
                 <option>Clothes</option>
-
                 <option>other..</option>
               </select>
             </Col>
-
             <Col className="mt-5">
               <Button type="submit" variant="success">
                 Add New Expense
@@ -67,5 +102,4 @@ function ExpenseForm(props) {
     </Fragment>
   );
 }
-
 export default ExpenseForm;
