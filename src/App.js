@@ -1,13 +1,21 @@
 
-import React from 'react-router-dom';
-import NavBar from './components/Layout/NavBar';
-function App() {
-  return (
-    
-   <>
-<NavBar></NavBar>
-   </>
-  );
-}
+import React, { useContext } from 'react'
 
-export default App;
+import { Route} from 'react-router-dom'
+import ExpensePage from './components/pages/ExpensePage'
+import AuthContext from './components/store/AuthContext'
+import SignUp from './components/Layout/SignUp'
+function App() {
+  const authCtx = useContext(AuthContext)
+  return ( <div>
+    <main>
+ {authCtx.isLoggedIn &&  <Route path='/ExpensePage'>
+      <ExpensePage/>
+    </Route>}
+   </main>
+
+ {!authCtx.isLoggedIn&&<SignUp/>}  
+  </div>
+)
+}
+export default App
