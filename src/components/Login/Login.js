@@ -1,23 +1,22 @@
 import React, { useRef } from "react";
 import classes from "./Login.module.css";
 
-import ForgetPassword from "../ForgetPassword/ForgetPassword";
+import ForgetPassword from "../ForgetPassword/Forgetpassword";
 import { useSelector, useDispatch } from "react-redux";
 import { AuthSliceAction } from "../../store/Auth";
 import { useHistory } from "react-router-dom";
 const AuthForm = () => {
   const History = useHistory();
-  // const ctx = useContext(AuthContex);
   const Dispatch = useDispatch();
   const isLogin = useSelector((state) => state.auth.isLogin);
   const isForgetpassword = useSelector((state) => state.auth.isForgetpassword);
 
   const loginURL =
-    "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyB4eAcKhjMaxtHrq60AlEDI6Ace0n31ogg";
+    "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBTThTF2bZBEybWGDxdJF9j6pEtGVzXUrY";
   const signupUrl =
-    "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyB4eAcKhjMaxtHrq60AlEDI6Ace0n31ogg";
+    "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBTThTF2bZBEybWGDxdJF9j6pEtGVzXUrY";
   const RestUrl =
-    "https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyB4eAcKhjMaxtHrq60AlEDI6Ace0n31ogg";
+    "https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyBTThTF2bZBEybWGDxdJF9j6pEtGVzXUrY";
   const enteredEmail = useRef(null);
   const enteredPassword = useRef(null);
   const enteredconfirmPassword = useRef(null);

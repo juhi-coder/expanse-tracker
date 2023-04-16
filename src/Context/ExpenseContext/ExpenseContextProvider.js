@@ -9,7 +9,7 @@ const ExpenseContextProvider = (props) => {
   const getItemListHandler = async () => {
     try {
       const response = await fetch(
-        "https://tracker-118e0-default-rtdb.firebaseio.com/tracker.json",
+        "https://expanse-tracker-606c0-default-rtdb.firebaseio.com/tracker.json",
         {
           method: "GET",
 
@@ -41,7 +41,7 @@ const ExpenseContextProvider = (props) => {
   const deleteItemHandler = async (id) => {
     try {
       const response = await fetch(
-        `https://tracker-118e0-default-rtdb.firebaseio.com/tracker/${id}.json`,
+        `https://expanse-tracker-606c0-default-rtdb.firebaseio.com/${id}.json`,
         {
           method: "DELETE",
 

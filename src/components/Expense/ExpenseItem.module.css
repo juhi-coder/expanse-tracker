@@ -1,4 +1,4 @@
-ExpenseItem-li {
+.ExpenseItem-li {
     width: 100%;
     font-size: 16px;
     background-color: rgba(50, 19, 19, 0.83);
@@ -63,3 +63,4 @@ ExpenseItem-li {
       font-size: 15px;
     }
   }
+  

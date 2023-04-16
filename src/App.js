@@ -11,7 +11,7 @@ const ExpenseForm = React.lazy(() =>
   import("./components/Expense/ExpenseForm")
 );
 const LoadingSpinner = React.lazy(() =>
-  import("./components/Loadingspinner/LoadingSpinner")
+  import("./components/Header/LoadingSpinner.js/LoadingSpinner")
 );
 const ContactDetails = React.lazy(() =>
   import("./components/Login/ContactDetails")
@@ -30,11 +30,11 @@ function App() {
       Dispatch(AuthSliceAction.setLoginsate());
     }
   }, []);
-
+  
   console.log(dark);
   return (
     <>
-     {" "}
+      {" "}
       <Suspense fallback={<p className="">Loading .....</p>}>
         <div className={dark || !loginState ? "light" : "dark"}>
           {loginState && <Header></Header>}
@@ -74,4 +74,5 @@ function App() {
     </>
   );
 }
+
 export default App;

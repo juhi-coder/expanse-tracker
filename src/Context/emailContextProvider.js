@@ -10,7 +10,7 @@ const EmailcontextProvider = (props) => {
     console.log("loginHandler", obj);
     try {
       const response = await fetch(
-        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyB4eAcKhjMaxtHrq60AlEDI6Ace0n31ogg",
+        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBTThTF2bZBEybWGDxdJF9j6pEtGVzXUrY",
         {
           method: "POST",
           body: JSON.stringify(obj),
@@ -39,7 +39,7 @@ const EmailcontextProvider = (props) => {
     //console.log("signupHandler", item);
     try {
       const response = await fetch(
-        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyB4eAcKhjMaxtHrq60AlEDI6Ace0n31ogg",
+        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBTThTF2bZBEybWGDxdJF9j6pEtGVzXUrY",
         {
           method: "POST",
           body: JSON.stringify(obj),
@@ -65,7 +65,7 @@ const EmailcontextProvider = (props) => {
     try {
       // console.log(obj);
       const response = await fetch(
-        "https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyB4eAcKhjMaxtHrq60AlEDI6Ace0n31ogg",
+        "https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyBTThTF2bZBEybWGDxdJF9j6pEtGVzXUrY",
         {
           method: "POST",
           body: JSON.stringify(obj),
@@ -99,7 +99,7 @@ const EmailcontextProvider = (props) => {
     History.push("/loading");
     try {
       const response = await fetch(
-        "https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyB4eAcKhjMaxtHrq60AlEDI6Ace0n31ogg",
+        "https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyBTThTF2bZBEybWGDxdJF9j6pEtGVzXUrY",
         {
           method: "POST",
           body: JSON.stringify(obj),

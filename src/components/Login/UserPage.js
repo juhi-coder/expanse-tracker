@@ -1,10 +1,7 @@
 import { Link } from "react-router-dom";
 import classes from "./UserPage.module.css";
-import AuthContex from "../../Context/CreateContext";
 
-const UserPage = (props) => {
-
-
+const UserPage = () => {
   const emailverifyHandler = async () => {
     const obj = {
       idToken: localStorage.getItem("id"),
@@ -12,7 +9,7 @@ const UserPage = (props) => {
     };
     try {
       const response = await fetch(
-        "https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyB4eAcKhjMaxtHrq60AlEDI6Ace0n31ogg",
+        "https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyBTThTF2bZBEybWGDxdJF9j6pEtGVzXUrY",
         {
           method: "POST",
           body: JSON.stringify(obj),

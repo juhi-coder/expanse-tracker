@@ -1,19 +1,16 @@
 import React, { useRef, useContext, useEffect } from "react";
 import AuthContex from "../../Context/CreateContext";
 
-import classes from "./ContactDetails.module.css";
+import classes from "./ContactDetail.module.css";
 const ContactDetails = () => {
   const ctx = useContext(AuthContex);
-  const enteredName = useRef(null);
-  const enteredUrl = useRef(null);
-
-  //getting user details
-
+  const enteredName = useRef();
+  const enteredUrl = useRef();
   useEffect(() => {
     const getuserData = async () => {
       try {
         const response = await fetch(
-          "https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyB4eAcKhjMaxtHrq60AlEDI6Ace0n31ogg",
+          "https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyBTThTF2bZBEybWGDxdJF9j6pEtGVzXUrY",
           {
             method: "POST",
             body: JSON.stringify({
@@ -50,7 +47,7 @@ const ContactDetails = () => {
     }
     try {
       const response = await fetch(
-        "https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyB4eAcKhjMaxtHrq60AlEDI6Ace0n31ogg",
+        "https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyBTThTF2bZBEybWGDxdJF9j6pEtGVzXUrY",
         {
           method: "POST",
           body: JSON.stringify(obj),

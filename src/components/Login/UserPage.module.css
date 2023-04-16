@@ -52,7 +52,7 @@
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     padding: 2%;
     cursor: pointer;
-  
+    
   }
   @media screen and (max-width: 700px) {
     .userheader {
@@ -91,3 +91,4 @@
       cursor: pointer;
     }
   }
+  
